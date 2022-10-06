@@ -21,6 +21,7 @@ export default function Login() {
                 password: passwordRef.current.value,
             })
             dispatch({type:"LOGIN_SUCCESS", payload:res.data});
+            res.data && window.location.replace("/write");
         } catch (error) {
             dispatch({type:"LOGIN_FAILURE"});
         }
@@ -42,7 +43,7 @@ export default function Login() {
             placeholder='Enter your password...'
             ref={passwordRef}
             />
-            <button className="loginButton" type="submit" disabled={isFetching}>Login</button>
+            <button className="loginButton" type="submit" onClick={handleSubmit} disabled={isFetching}>Login</button>
         </form>
         <h4 className='no-account'>Don't have an account?</h4>
         <button className="loginregisterButton">

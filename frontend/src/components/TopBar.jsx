@@ -1,6 +1,6 @@
 import React, { useContext } from 'react'
 import "./topBar.css"
-import {FaSignInAlt, FaSignOutAlt, FaUser} from 'react-icons/fa'
+import {FaSignInAlt, FaUser} from 'react-icons/fa'
 //import Login from '../pages/login/Login';
 //import Register from '../pages/register/Register';
 import Settings from '../pages/settings/Settings';
@@ -50,7 +50,7 @@ export default function TopBar() {
                         </Link>
                     <li className='topList-item'>
                      <button className='btn' onClick={handleLogout}>{user && "LOGOUT"}
-                         <FaSignOutAlt/> Logout
+                        Logout
                     </button>
                     </li>
                     </ul>
