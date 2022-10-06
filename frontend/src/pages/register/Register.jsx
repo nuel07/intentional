@@ -1,109 +1,63 @@
 import './register.css'
-import e from 'express'
+//import e from 'express'
 import axios from 'axios'
-import {toast} from 'react-toastify'
-import { useSelector, useDispatch } from 'react-redux'
-import { Link, useNavigate } from 'react-router-dom'
-import { useState, useEffect } from 'react'
-import {register, reset} from '../../features/auth/authSlice'
-import Spinner from '../../components/Spinner'
-//import { compareSync } from 'bcryptjs'
+import { Link } from 'react-router-dom'
+import { useState } from 'react'
+import { useContext } from 'react'
+import { Context } from '../../context/Context'
+//import { useLocation } from 'react-router-dom'
+
 
 export default function Register() {
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    password: '',
-})
-const { name, email, password, password2 } = formData
-
-const navigate = useNavigate()
-const dispatch = useDispatch()
-
-const {user, isLoading, isError, isSuccess, message} = useSelector((state) => (
-  state.auth
-))
-
-useEffect(() => {
-    if(isError){
-        toast.error(message)
-    }
-    if(isSuccess || user){
-        navigate('/')
-    }
-
-    dispatch(reset)
-}, [user, isError, isSuccess, message, navigate, dispatch])
-
-const onChange = (e) => {
-    setFormData((prevState) => ({
-        ...prevState,
-        [e.target.name]: e.target.value,
-    }))
-}
-const onSubmit = (e) => {
-    e.preventDefault()
-    if(password !== password2){
-        toast.error('Passwords don\'t match')
-    } else {
-        const userData = {
-            name,
-            email,
-            password,
-        }
-        dispatch(register(userData))
-    }
-}
-
-if (isLoading){
-    return <Spinner />
-}
-  /**
-   *   const [username, setUsername] = useState("")
+  const [username, setUsername] = useState("")
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
   const [error, setError] = useState(false)
+  const { dispatch } = useContext(Context)
+  //const location = useLocation()
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    dispatch({ type: "REGISTER_START"})
     setError(false)
     try {
-      const res = await axios.post("/api/register", {
+      const res = await axios.post("/auth/register", {
         username,
         email,
         password
       });
+      dispatch({ type: "REGISTER_SUCCESS", payload: res.data })
       res.data && window.location.replace("/login");
     } catch (error) {
+      dispatch({type: "REGISTER_FAILURE"})
       setError(true)
     }
   }
-   * 
-   */
 
   return (
     <div className='register'>
        <span className="registerTitle">Sign up today</span>
-        <form className="registerForm" onSubmit={onSubmit}>
+        <form className="registerForm" onSubmit={handleSubmit}>
           <label >Username</label>
             <input className='registerInput' type="text" 
             placeholder='Enter your username....'
-            onChange={onChange}/>
+            onChange={(e)=>setUsername(e.target.value)}/>
             <label >Email</label>
             <input className='registerInput' type="email"
             placeholder='Enter your email....'
-            onChange={onChange}
+            onChange={(e)=>setEmail(e.target.value)}
             />
             <label >Password</label>
             <input className='registerInput' type="password"
             placeholder='Enter your password...'
-            onChange={onChange}/>
-            <button className='registerButton' type='submit'>Register</button>
+            onChange={(e)=>setPassword(e.target.value)}/>
+            <button className='registerButton' type='submit' onClick={handleSubmit}>Register</button>
         </form>
         <h4 className='have-account'>Have an account?</h4>
         <button className="registerloginButton">
           <Link className='link' to="/login">Login</Link>
         </button>
+        {error && <span style={{color:"red", marginTop:"10px"}}>oops! Something went wrong!</span>}
     </div>
-  )
+  );
 }

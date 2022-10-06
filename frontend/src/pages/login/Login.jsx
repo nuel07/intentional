@@ -1,69 +1,48 @@
 import './login.css'
-import e from 'express'
-import { Link, useNavigate } from 'react-router-dom'
-import { useState, useEffect } from 'react'
-import { useSelector, useDispatch } from 'react-redux'
-import {toast} from 'react-toastify'
-import {login, reset} from '../../features/auth/authSlice'
+//import e from 'express'
+import { Link } from 'react-router-dom'
+import { useContext } from 'react'
 import Spinner from '../../components/Spinner'
+import { useRef } from 'react'
+import { Context } from '../../context/Context'
+import axios from 'axios'
 
 export default function Login() {
-  const [formData, setFormData] = useState({
-    username: '',
-    password: ''
-})
-const { username, password } = formData
+    const userRef = useRef();
+    const passwordRef = useRef();
+    const { dispatch, isFetching} = useContext(Context)
 
-const navigate = useNavigate()
-const dispatch = useDispatch()
-
-const {user, isLoading, isError, isSuccess, message} = useSelector((state) => (
-    state.auth
-))
-
-useEffect(() => {
-    if(isError){
-        toast.error(message)
+    const handleSubmit = async (e) => {
+        e.preventDefault()
+        dispatch({type:"LOGIN_START"})
+        try {
+            const res = axios.post("/auth/login", {
+                username: userRef.current.value,
+                password: passwordRef.current.value,
+            })
+            dispatch({type:"LOGIN_SUCCESS", payload:res.data});
+        } catch (error) {
+            dispatch({type:"LOGIN_FAILURE"});
+        }
     }
-    if(isSuccess || user){
-        navigate('/')
+    if(isFetching){
+        return <Spinner />
     }
-
-    dispatch(reset)
-}, [user, isError, isSuccess, message, navigate, dispatch])
-
-
-const onChange = () => {
-    setFormData((prevState) => ({
-        ...prevState,
-        [e.target.name]: e.target.value,
-    }))
-}
-const onSubmit = (e) => {
-    e.preventDefault()
-
-    const userData = {
-        username,
-        password,
-    }
-
-    dispatch(login(userData))
-}
-
-if(isLoading){
-    return <Spinner />
-}
   return (
     <div className='login'>
         <span className="loginTitle">Login</span>
-        <form className="loginForm" onSubmit={onSubmit}>
+        <form className="loginForm" onSubmit={handleSubmit}>
             <label >Username</label>
-            <input className='loginInput' type="email"
-            placeholder='Enter your username....' onChange={onChange}/>
+            <input className='loginInput' type="text"
+            placeholder='Enter your username....'
+            ref={userRef}
+            />
             <label >Password</label>
             <input className='loginInput' type="password"
-            placeholder='Enter your password...' onChange={onChange}/>
-            <button className="loginButton" type="submit" disabled={isLoading}>Login</button>
+            placeholder='Enter your password...'
+            ref={passwordRef}
+            />
+            <button className="loginButton" type="submit" disabled={isFetching}>Login</button>
         </form>
         <h4 className='no-account'>Don't have an account?</h4>
         <button className="loginregisterButton">

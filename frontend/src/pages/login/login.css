@@ -27,10 +27,13 @@
 .loginButton{
     margin-top: 20px;
     cursor: pointer;
-    background-color: rgb(24, 39, 24);
+    background-color: rgb(165, 120, 5);
     color: white;
     border-radius: 10px;
     padding: 10px;
+}
+.loginButton:hover{
+    background-color: rgb(24, 39, 24);   
 }
 .loginButton:disabled{
     cursor: not-allowed;
@@ -52,4 +55,7 @@
     padding: 10px;
     color: white;
     border-radius: 10px;
+}
+.loginregisterButton:hover{
+    background-color: rgb(180, 154, 8);
 }

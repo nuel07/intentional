@@ -17,9 +17,16 @@
     margin-bottom: 20px;
     color: rgb(13, 141, 34);
 }
-.delete{
-    font-size: 20px;
-    color: red;
+.deletebutton{
+    position: absolute;
+    top: 20px;
+    right: 50px;
+    color: whitesmoke;
+    background-color: red;
+    padding: 10px;
+    border: none;
+    border-radius: 10px;
+    font-size: 16px;
     cursor: pointer;
 }
 .settingsForm{

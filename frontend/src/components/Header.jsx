@@ -1,6 +1,6 @@
 import "./headerstyle.css"
 
-export default function header() {
+export default function Header() {
   return (
     <div className="header">
         <div className="headerTitles">
@@ -8,7 +8,7 @@ export default function header() {
             let's be...
           </span>
         </div>
-        <img src="images/intentional1.webp" alt="continuousdevelopment" className="headerImg" />
+        <img src="images/intentional1.webp" alt="intentionalLogo" className="headerImg" />
     </div>
   )
 }

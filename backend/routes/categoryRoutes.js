@@ -1,10 +1,26 @@
 const express = require('express');
-const { postCategory, getCategory } = require('../controllers/categoryController');
 const router = express.Router();
+const Category = require('../models/categoryModel')
 
-/**router.get('/', getPosts);
-/router.post('/', writePosts); these two can be combined into one line
-for code readability as below**/
-router.route('/').post(postCategory);
-router.route('/').get(getCategory);
+// Create a category
+router.post("/", async(req, res) => {
+    const newCat = new Category(req.body);
+    try {
+        const savedCat = await newCat.save()
+        res.status(200).json("Category Saved")
+    } catch (error) {
+        res.status(500).json(error)
+    }
+})
+
+//Get all categories
+router.get("/", async(req, res) => {
+    try {
+        const cats = await Category.find()
+        res.status(200).json(cats)
+    } catch (error) {
+        res.status(500).json(error)
+    }
+})
+
 module.exports = router;

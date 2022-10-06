@@ -53,6 +53,10 @@
     font-size: 16px;
     cursor: pointer;
 }
+.writeSubmit:hover{
+    transition: all .4s ease-in-out;
+    background-color: blue;
+}
 .imageInput{
     display: none;
 }

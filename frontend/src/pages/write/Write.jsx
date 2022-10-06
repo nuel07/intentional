@@ -1,23 +1,23 @@
 import './write.css'
-import { useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import { createPost } from '../../features/posts/postSlice'
+import { useContext, useState } from 'react'
 import axios from 'axios'
-import { useLocation } from 'react-router-dom'
+//import { useLocation } from 'react-router-dom'
+import { Context } from '../../context/Context'
+import Spinner from '../../components/Spinner'
 
 export default function Write() {
-  const location = useLocation()
+  //const location = useLocation()
   const [title, setTitle] = useState('')
-  const [desc, setDesc] = useState('')
+  const [description, setDesc] = useState('')
   const [file, setFile] = useState(null)
-  const {user} = useSelector((state) => state.auth)
+  const {user, isFetching} = useContext(Context)
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     const newPost = {
       username:user.username,
       title,
-      desc,
+      desc: description,
     }
     if(file){
       const data = new FormData();
@@ -27,6 +27,11 @@ export default function Write() {
       newPost.photo = filename
       try {
         await axios.post("/upload", data)
+        if(isFetching){
+          return(
+            <Spinner />
+          )
+        }
       } catch (error) {
         
       }
@@ -57,7 +62,7 @@ export default function Write() {
             <textarea placeholder='lets hear it.....' type='text'
             className='txtInput writeTxt' onChange={(e) => setDesc(e.target.value)}></textarea>
         </div>
-        <button className="writeSubmit" type='submit'>Publish</button>
+        <button className="writeSubmit" type='submit' onClick={handleSubmit}>Publish</button>
       </form>
     </div>
   )

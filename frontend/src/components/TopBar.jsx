@@ -1,32 +1,29 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import "./topBar.css"
 import {FaSignInAlt, FaSignOutAlt, FaUser} from 'react-icons/fa'
-import Login from '../pages/login/Login';
-import Register from '../pages/register/Register';
+//import Login from '../pages/login/Login';
+//import Register from '../pages/register/Register';
 import Settings from '../pages/settings/Settings';
 import {Link, useNavigate} from 'react-router-dom'
-import {useSelector, useDispatch} from 'react-redux'
-import {logout, reset} from '../features/auth/authSlice' 
-import Sidebar from './Sidebar';
+//import Sidebar from './Sidebar';
+import { Context } from '../context/Context';
 
 export default function TopBar() {
     const navigate = useNavigate()
-    const dispatch = useDispatch()
-    const {user} = useSelector((state) => state.auth)
+    const {user, dispatch} = useContext(Context)
     const pics = "http://localhost:5000/images"
 
-    const onLogout = () => {
-        dispatch(logout())
-        dispatch(reset())
+    const handleLogout = () => {
+        dispatch({type: "LOGOUT"})
         navigate('/')
     }
     return (
     <div className='top'>
         <div className="topLeft">
-            <i className='topIcon fab fa-facebook-square'></i>
-            <i className='topIcon fab fa-twitter-square'></i>
-            <i className='topIcon fab fa-pinterest-square'></i>
-            <i className='topIcon fab fa-instagram-square'></i>
+            <a href="https://github.com/nuel07" target="blank"><i className='topIcon fa-brands fa-github'></i></a>
+            <a href="https://pinterest.com/yehanganep" target="blank"><i className='topIcon fa-brands fa-pinterest'></i></a>
+            <a href="https://dockerhub.com.com/nuel07" target="blank"><i className='topIcon fa-brands fa-docker'></i></a>
+            <a href="https://medium.com/@yehanganep" target="blank"><i className='topIcon fa-brands fa-medium'></i></a>
         </div>
         <div className="topCenter">
             <ul className="topList">
@@ -39,7 +36,7 @@ export default function TopBar() {
                 </li>
                 ): (
                 <li className='topList-item'>
-                    <Link to={<Sidebar />} className="link">ABOUT</Link>
+                    <a href="https://github.com/nuel07/intentional" target="blank" className='link'>ABOUT</a>
                 </li>
                 )}
             </ul>
@@ -48,11 +45,11 @@ export default function TopBar() {
             {
                 user ? (
                     <ul className='topList'>
-                        <Link to={"/settings"}>
+                        <Link to={<Settings />}>
                             <img className='topImg' src={pics + user.profilePic} alt="profile" />
                         </Link>
                     <li className='topList-item'>
-                     <button className='btn' onClick={onLogout}>
+                     <button className='btn' onClick={handleLogout}>{user && "LOGOUT"}
                          <FaSignOutAlt/> Logout
                     </button>
                     </li>
@@ -61,19 +58,18 @@ export default function TopBar() {
                 ): (
                     <ul className='topList'>
                     <li className='topList-item'>
-                        <Link to={<Login />} className="link">
-                            <FaSignInAlt/> LOGIN
+                        <Link to={"/login"} className="link">
+                            <FaSignInAlt/> Login
                         </Link>
                     </li>
                     <li>
-                        <Link to={<Register />} className="link">
-                        <FaUser/> REGISTER
+                        <Link to={"/register"} className="link">
+                        <FaUser/> Register
                         </Link>
                     </li>
                     </ul>
                 )
             }
-            <i className='topSearch fas fa-search'></i>
         </div>
     </div>
   )

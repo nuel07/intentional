@@ -1,28 +1,35 @@
-import { useSelector, useDispatch } from 'react-redux'
 import './settings.css'
-import {toast} from 'react-toastify'
-import { useLocation } from 'react-router-dom'
-import { useState } from 'react'
-import {update} from '../../features/auth/authSlice'
+//import { useLocation } from 'react-router-dom'
+import { useContext, useState } from 'react'
 import axios from 'axios'
+import { Context } from '../../context/Context'
 
 export default function Settings() {
-  const dispatch = useDispatch()
+  //user info
   const [file, setFile] = useState(null)
   const [username, setUsername] = useState('')
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
-  //const {user} = useSelector((state) => state.auth)
-  const {user, isLoading, isError, isSuccess, message} = useSelector((state) => (
-    state.auth
-))
+
+  //context info
+  const { user, dispatch, } = useContext(Context)
   const [success, setSuccess] = useState(false)
   const pics = "http://localhost:5000/images"
+
+  const handleDelete = async() => {
+    try {
+        await axios.delete(`/users/${user._id}`,
+        {data: {username:user.username}})
+        window.location.replace("/")   
+    } catch (error) {
+        
+    }
+}
 
   //handling update clicks
   const handleSubmit = async (e) => {
     e.preventDefault();
-    dispatch(update(updatedUser))
+    dispatch({type: "UPDATE_START"})
     const updatedUser = {
       userId:user._id,
       username,
@@ -42,19 +49,21 @@ export default function Settings() {
       }
     }
     try {
-      await axios.put("/users/" + user._id, updatedUser)
+      const res = await axios.put("/users/" + user._id, updatedUser)
      //window.location.replace("/post" + res.data.id);
      setSuccess(true)
+     dispatch({type: "UPDATE_SUCCESS", payload: res.data})
     } catch (error) {
-      toast.error(message)
+      dispatch({type: "UPDATE_FAILURE"})
     }
   }
   return (
+  <>
     <div className='settings'>
       <div className="settingsWrapper">
         <div className="settingsTitle">
             <span className="update">Update your account</span>
-            <span className="delete">Delete your account</span>
+            <button className="deletebutton" onClick={handleDelete}>Deactivate</button>
         </div>
         <form className="settingsForm" onSubmit={handleSubmit}>
             <label>Profile Picture</label>
@@ -80,5 +89,6 @@ export default function Settings() {
         </form>
       </div>
     </div>
+    </>
   )
 }
