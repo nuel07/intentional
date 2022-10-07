@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom'
 import { useState } from 'react'
 import { useContext } from 'react'
 import { Context } from '../../context/Context'
+import validator from 'validator'
 //import { useLocation } from 'react-router-dom'
 
 
@@ -26,6 +27,11 @@ export default function Register() {
         email,
         password
       });
+      if(validator.isEmail(email)){
+        setEmail('Valid Email')
+      } else{
+        setEmail('Enter a valid email')
+      }
       dispatch({ type: "REGISTER_SUCCESS", payload: res.data })
       res.data && window.location.replace("/login");
     } catch (error) {

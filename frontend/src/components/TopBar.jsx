@@ -1,6 +1,6 @@
 import React, { useContext } from 'react'
 import "./topBar.css"
-import {FaSignInAlt, FaUser} from 'react-icons/fa'
+//import {FaSignInAlt, FaUser} from 'react-icons/fa'
 //import Login from '../pages/login/Login';
 //import Register from '../pages/register/Register';
 import Settings from '../pages/settings/Settings';
@@ -59,12 +59,12 @@ export default function TopBar() {
                     <ul className='topList'>
                     <li className='topList-item'>
                         <Link to={"/login"} className="link">
-                            <FaSignInAlt/> Login
+                           Login
                         </Link>
                     </li>
                     <li>
                         <Link to={"/register"} className="link">
-                        <FaUser/> Register
+                         Register
                         </Link>
                     </li>
                     </ul>

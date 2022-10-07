@@ -9,7 +9,7 @@ import Login from "./pages/login/Login";
 import Register from "./pages/register/Register";
 import {
   BrowserRouter as Router,
-  Navigate,
+  //Navigate,
   Routes,
   Route,
   //Link
@@ -22,18 +22,13 @@ function App() {
     <>
     <Router>
       <TopBar />
+      <Home />
       <Routes>
-        <Route path="/" element={<Home />}/>
-        <Route path="/register" element={<Register/>}/>
-        <Route path="/login" element={<Login/>}/>
-        <Route path="/settings" element={<Settings />}/>
-        <Route path="/write" element={<Write />}/>
-
-        <Route path="/register" element={ user? <Login />: <Navigate to={"/register"}/>}/>
-        <Route path="/login" element={ user? <Login />:<Navigate to={<Register />}/>}/>
-        <Route path="/write" element={user? <Write />: <Navigate to={"/login"}/>}/>
-        <Route path="/settings" element={user? <Settings />: <Navigate to={"/login"}/>}/>
-        <Route path="/post/:postId" element={<Single />}/>
+        <Route path="/register" element={user? <Home />: <Register />}/>
+        <Route path="/login" element={user? <Home />: <Login />}/>
+        <Route path="/settings" element={user?<Settings />: <Register />}/>
+        <Route path="/write" element={user? <Write />: <Register/>}/>
+        <Route path="/posts/:postId" element={<Single />}/>
       </Routes>
       </Router>
     </>
