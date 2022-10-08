@@ -22,7 +22,7 @@ export default function Register() {
     dispatch({ type: "REGISTER_START"})
     setError(false)
     try {
-      const res = await axios.post("/auth/register", {
+      const res = await axios.post("/api/users/auth/register", {
         username,
         email,
         password
