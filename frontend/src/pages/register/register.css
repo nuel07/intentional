@@ -4,8 +4,8 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    background: linear-gradient(rgba(255,255,255,0.5),
-    rgba(255,255,255,0.5)) url("https://registerimage");
+    background-image: linear-gradient(rgba(255,255,255,0.5),
+    rgba(255,255,255,0.5)) url("../../../public/images/Signup.png");
     background-size: cover;
 }
 .registerTitle{

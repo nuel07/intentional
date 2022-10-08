@@ -18,13 +18,13 @@ router.get("/", async(req, res) => {
         } else {
             posts = await Post.find()
         }
-        res.status(200).json(posts)
+        res.status(200).json({posts})
     } catch (error) {
         res.status(500).json(error)
     }
 })
 //Create new Post
-router.post("/", async (req, res) =>{
+router.post("/write", async (req, res) =>{
     const newPost = new Post(req.body);
     try {
        const savedPost = await newPost.save();
@@ -33,6 +33,7 @@ router.post("/", async (req, res) =>{
         res.status(500).json(error)
     }
 })
+
 //Update post info
 router.put("/:id", async(req, res) => {
     try {

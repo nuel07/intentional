@@ -18,7 +18,8 @@ const userSchema = new mongoose.Schema({
     profilePic:{
         type: String,
         default:""
-    }
+    },
+    //posts: [{type: mongoose.Types.ObjectId, ref: "Post", required: true}]
 },
 {
     timestamps: true

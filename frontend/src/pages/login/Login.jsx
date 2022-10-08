@@ -16,12 +16,12 @@ export default function Login() {
         e.preventDefault()
         dispatch({type:"LOGIN_START"})
         try {
-            const res = axios.post("/auth/login", {
+            const res = await axios.post("/auth/login", {
                 username: userRef.current.value,
                 password: passwordRef.current.value,
             })
             dispatch({type:"LOGIN_SUCCESS", payload:res.data});
-            res.data && window.location.replace("/write");
+            res.data && window.location.replace("/posts");
         } catch (error) {
             dispatch({type:"LOGIN_FAILURE"});
         }

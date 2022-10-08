@@ -26,6 +26,8 @@ export default function SinglePost() {
         }
         getPost();
     }, [path])
+
+    //delete post
     const handleDelete = async() => {
         try {
             await axios.delete(`api/posts/${post._id}`,
@@ -35,6 +37,8 @@ export default function SinglePost() {
             
         }
     }
+
+    //update post
     const handleUpdate = async() => {
         try {
             await axios.put(`api/posts/${post._id}`, {
