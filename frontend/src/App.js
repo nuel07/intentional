@@ -24,10 +24,10 @@ function App() {
       <TopBar />
       <Routes>
         <Route path="/" element={<Home />}/>
-        <Route path="/register" element={user? <Home />: <Register />}/>
-        <Route path="/login" element={user? <Login />: <Register />}/>
-        <Route path="/settings" element={user?<Settings />: <Register />}/>
-        <Route path="/write" element={user? <Write />: <Register/>}/>
+        <Route path="/register" element={<Register />}/>
+        <Route path="/login" element={<Login />}/>
+        <Route path="/settings" element={<Settings/>}/>
+        <Route path="/write" element={<Write />}/>
         <Route path="/posts/:postId" element={<Single />}/>
       </Routes>
       </Router>
