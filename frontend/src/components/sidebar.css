@@ -42,13 +42,13 @@
 }
 .sidebar-listItem{
     display: inline-block;
-    max-width: 50%;
+    width: 50%;
     margin-top: 15px;
     cursor: pointer;
 }
 .sidebarSocial{
     margin-top: 15px;
-    max-width: 250px;
+    width: 250px;
     display: flex;
     align-items: center;
     justify-content: center;

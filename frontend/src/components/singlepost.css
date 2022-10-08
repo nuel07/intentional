@@ -9,8 +9,8 @@
 }
 
 .singlePostImg{
-    max-width: 100%;
-    min-height: 300px;
+    width: 100%;
+    height: 300px;
     border-radius: 5px;
     object-fit: cover;
 }
@@ -74,7 +74,7 @@
     outline: none;
 }
 .singlePostButton{
-    max-width: 20%;
+    width: 20%;
     color: white;
     border-radius: 10px;
     cursor: pointer;
