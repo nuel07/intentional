@@ -1,8 +1,10 @@
 import './post.css'
 import { Link } from 'react-router-dom'
+import { useState } from 'react'
 
-export default function Post({post}) {
+export default function Post() {
   const pics = "http://localhost:5000/images"
+  const [post] = useState({})
   return (
     <div className='post'>
       {post.photo && (

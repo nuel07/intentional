@@ -40,7 +40,7 @@ export default function TopBar() {
                 user ? (
                     <ul className='topList'>
                         <Link to={"/settings"}>
-                            <img className='topImg' src={pics + user.profilePic} alt="profile" />
+                            Profile
                         </Link>
                     <li className='topList-item'>
                      <button className='btn' onClick={handleLogout}>
