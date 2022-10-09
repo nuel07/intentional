@@ -6,7 +6,7 @@
     justify-content: center;
     background: linear-gradient(rgba(255,255,255,0.5),
     rgba(255,255,255,0.5)), url("https://www.successmantra.in/assets/assestsnew/images/login-registration.png");
-    background-size: cover;
+    background-size: contain;
 }
 .loginTitle{
     font-size: 50px;

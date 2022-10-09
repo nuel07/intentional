@@ -26,6 +26,6 @@
         min-height: 100px;
         margin-top: 5px;
         object-fit: cover;
-        position: relative;
+        display: flex;
     }
 }
