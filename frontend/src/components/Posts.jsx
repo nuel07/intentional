@@ -23,9 +23,7 @@ export default function Posts() {
   return (
     <>
       <div className='posts'>
-      {posts.map((p)=>(
-        <Post post={p}/>
-      ))}
+        <Post />
     </div>
     </>
   )
