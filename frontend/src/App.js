@@ -14,10 +14,11 @@ import {
   Route,
   //Link
 } from 'react-router-dom';
-import { Context } from "./context/Context";
+//import { Context } from "./context/Context";
+import { useSelector } from "react-redux";
 
 function App() {
-  const {user} = useContext(Context)
+  const {user} = useSelector(state => state.auth)
   return (
     <>
     <Router>

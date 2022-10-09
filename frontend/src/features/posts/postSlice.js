@@ -11,9 +11,9 @@ const initialState = {
 }
 
 //Create a new post
-export const createPost = createAsyncThunk('posts/create', async(postData, thunkAPI) =>{
+export const createPost = createAsyncThunk('posts/write', async(postData, thunkAPI) =>{
     try {
-        const token = thunkAPI.getState().auth.user.token
+        //const token = thunkAPI.getState().auth.user.token
         return await postService.createGoal(postData, token)
     } catch (error) {
         const message = (
@@ -27,7 +27,7 @@ export const createPost = createAsyncThunk('posts/create', async(postData, thunk
 })
 
 //Get user posts
-export const getPosts = createAsyncThunk('posts/getAll', async(_, thunkAPI) => {
+export const getPosts = createAsyncThunk('/posts', async(_, thunkAPI) => {
     try {
         const token = thunkAPI.getState().auth.user.token
         return await postService.getPosts(token)
@@ -41,7 +41,7 @@ export const getPosts = createAsyncThunk('posts/getAll', async(_, thunkAPI) => {
 })
 
 //Delete post
-export const deletePost = createAsyncThunk('goals/delete', async(id, thunkAPI) =>{
+export const deletePost = createAsyncThunk('posts/:id', async(id, thunkAPI) =>{
     try {
         const token = thunkAPI.getState().auth.user.token
         return await postService.deletePost(id, token)
