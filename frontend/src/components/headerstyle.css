@@ -19,13 +19,15 @@
     margin-top: 5px;
     object-fit: cover;
     position: relative;
+    display: flex;
 }
 @media screen and (max-width: 40em){
     .headerImg{
         max-width: 70%;
-        min-height: 100px;
+        min-height: 80px;
         margin-top: 5px;
         object-fit: cover;
         display: flex;
+        margin-left: 10px;
     }
 }
