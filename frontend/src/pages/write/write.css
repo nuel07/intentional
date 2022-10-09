@@ -42,9 +42,9 @@
     height: 100vh;
 }
 .writeSubmit{
-    position: absolute;
-    top: 20px;
-    left: 10px;
+    position: relative;
+    top: 50px;
+    right: 50px;
     color: whitesmoke;
     background-color: turquoise;
     padding: 10px;
