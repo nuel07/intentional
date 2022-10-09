@@ -65,8 +65,8 @@
 .btn {
     padding: 10px 20px;
     border: 1px solid #000;
-    border-radius: 5px;
-    background: rgb(216, 167, 167);
+    border-radius: 15px;
+    background: rgb(100, 94, 94);
     color: #fff;
     font-size: 16px;
     font-weight: 700;

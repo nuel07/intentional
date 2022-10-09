@@ -39,7 +39,7 @@ export default function TopBar() {
             {
                 user ? (
                     <ul className='topList'>
-                        <Link to={"/settings"}>
+                        <Link to={"/settings"} className="link">
                             Profile
                         </Link>
                     <li className='topList-item'>
