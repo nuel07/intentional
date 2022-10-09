@@ -62,7 +62,7 @@ export default function Write() {
             <textarea placeholder='lets hear it.....' type='text'
             className='txtInput writeTxt' onChange={(e) => setDesc(e.target.value)}></textarea>
         </div>
-        <button className="writeSubmit" type='submit' onClick={handleSubmit}>Publish</button>
+        <button className="writeSubmit" type='submit'>Publish</button>
       </form>
     </div>
   )

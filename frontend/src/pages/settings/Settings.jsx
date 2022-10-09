@@ -36,6 +36,7 @@ export default function Settings() {
       username,
       email,
       password,
+      photo
     }
     if(file){
       const data = new FormData();
