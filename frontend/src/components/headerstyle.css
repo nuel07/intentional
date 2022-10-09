@@ -21,13 +21,13 @@
     position: relative;
     display: flex;
 }
-@media screen and (max-width: 40em){
+@media screen and (max-width: 600px){
     .headerImg{
         max-width: 70%;
         min-height: 80px;
         margin-top: 5px;
         object-fit: cover;
         display: flex;
-        margin-left: 10px;
+        margin-left: 50px;
     }
 }
