@@ -5,7 +5,7 @@ import { useState } from 'react'
 //import { Context } from '../context/postsContext'
 
 export default function Posts() {
-  const [posts] = useState()
+  const [posts] = useState([])
   return (
     <>
       <div className='posts'>
