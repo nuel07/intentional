@@ -4,11 +4,11 @@ const API_URL = '/api/posts'
 
 //Create new post
 const createPost = async(postData, token) =>{
-    const config = {
+    /*const config = {
         headers:{
             Athorization:`Bearer ${token}`
         }
-    }
+    }*/
 
     const response = await axios.post(API_URL, postData, config)
 
