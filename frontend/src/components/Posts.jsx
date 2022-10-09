@@ -16,10 +16,10 @@ export default function Posts() {
       return data
     } catch (error) {
     }
-    useEffect(() => {
-      getPosts().then(data => setPosts(data.posts))
-    }, [])
   }
+  useEffect(() => {
+    getPosts().then(data => setPosts(data.posts))
+  }, [])
   return (
     <>
       <div className='posts'>
