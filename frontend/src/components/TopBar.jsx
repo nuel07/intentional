@@ -20,13 +20,12 @@ export default function TopBar() {
     return (
     <div className='top'>
         <div className="topLeft">
-            <a href="https://github.com/nuel07" target="blank"><i className='topIcon fa-brands fa-github'></i></a>
+        <i class="fas fa-bars">
+        <a href="https://github.com/nuel07" target="blank"><i className='topIcon fa-brands fa-github'></i></a>
             <a href="https://pinterest.com/yehanganep" target="blank"><i className='topIcon fa-brands fa-pinterest'></i></a>
             <a href="https://dockerhub.com.com/nuel07" target="blank"><i className='topIcon fa-brands fa-docker'></i></a>
             <a href="https://medium.com/@yehanganep" target="blank"><i className='topIcon fa-brands fa-medium'></i></a>
-        </div>
-        <div className='topLeft toggle'>
-            <i class="fas fa-bars"></i>
+        </i>
         </div>
         <div className="topCenter">
             <ul className="topList">

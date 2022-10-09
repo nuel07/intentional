@@ -20,8 +20,6 @@
 @media screen and (max-width: 40em) {
   .topLeft{
     flex-direction: column;
-  }
-  .toggle {
     align-self: flex-end;
     display: initial;
     position: absolute;
