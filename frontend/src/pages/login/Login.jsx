@@ -16,12 +16,12 @@ export default function Login() {
         e.preventDefault()
         dispatch({type:"LOGIN_START"})
         try {
-            const res = await axios.post("http:localhost:5000/api/auth/login", {
+            const res = await axios.post("/api/auth/login", {
                 username: userRef.current.value,
                 password: passwordRef.current.value,
             })
             dispatch({type:"LOGIN_SUCCESS", payload:res.data});
-            res.data && window.location.replace("http:localhost:5000/api/posts");
+            res.data && window.location.replace("/api/posts");
         } catch (error) {
             dispatch({type:"LOGIN_FAILURE"});
         }
@@ -47,7 +47,7 @@ export default function Login() {
         </form>
         <h4 className='no-account'>Don't have an account?</h4>
         <button className="loginregisterButton">
-          <Link className='link' to="http://localhost:5000/api/auth/register">Register</Link>
+          <Link className='link' to="/api/auth/register">Register</Link>
         </button>
     </div>
   )

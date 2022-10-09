@@ -2,6 +2,7 @@ const path = require('path')
 const express = require('express');
 const colors = require('colors');
 const dotenv = require('dotenv').config();
+import cors from 'cors'
 const connectDB = require('./config/db');
 const authRoute = require("./routes/auth")
 const userRoute = require("./routes/userRoutes")
@@ -27,6 +28,7 @@ app.post("/api/upload", upload.single('file'), (req, res) => {
     res.status(200).json("File uploaded")
 })
 
+app.use(cors())
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use("/images", express.static(path.join(__dirname, "/images")))

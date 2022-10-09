@@ -66,7 +66,7 @@
     padding: 10px 20px;
     border: 1px solid #000;
     border-radius: 5px;
-    background: #000;
+    background: rgb(97, 36, 36);
     color: #fff;
     font-size: 16px;
     font-weight: 700;
@@ -76,6 +76,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    margin-left: 30px;
   }
   
   .btn svg{

@@ -22,7 +22,7 @@ export default function Register() {
     dispatch({ type: "REGISTER_START"})
     setError(false)
     try {
-      const res = await axios.post("http://localhost:5000/api/auth/register", {
+      const res = await axios.post("/api/auth/register", {
         username,
         email,
         password
@@ -33,7 +33,7 @@ export default function Register() {
         setEmail('Enter a valid email')
       }
       dispatch({ type: "REGISTER_SUCCESS", payload: res.data })
-      res.data && window.location.replace("http://localhost:5000/api/auth/login");
+      res.data && window.location.replace("/api/auth/login");
     } catch (error) {
       dispatch({type: "REGISTER_FAILURE"})
       setError(true)

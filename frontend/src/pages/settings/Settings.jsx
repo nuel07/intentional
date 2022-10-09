@@ -3,16 +3,17 @@ import './settings.css'
 import { useContext, useState } from 'react'
 import axios from 'axios'
 import { Context } from '../../context/Context'
+import Spinner from '../../components/Spinner'
 
 export default function Settings() {
   //user info
-  const [file, setFile] = useState(null)
+  const [file, setFile] = useState()
   const [username, setUsername] = useState('')
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
 
   //context info
-  const { user, dispatch, } = useContext(Context)
+  const { user, dispatch, isFetching } = useContext(Context)
   const [success, setSuccess] = useState(false)
   const pics = "http://localhost:5000/images"
 
@@ -43,13 +44,16 @@ export default function Settings() {
       data.append("file", file)
       updatedUser.profilePic = filename
       try {
-        await axios.post("http://localhost:5000/api/upload", data)
+        await axios.post("/upload", data)
+        if(isFetching){
+          return <Spinner/>
+        }
       } catch (error) {
         
       }
     }
     try {
-      const res = await axios.put("http://localhost:5000/api/users/" + user._id, updatedUser)
+      const res = await axios.put("/api/users/" + user._id, updatedUser)
      //window.location.replace("/post" + res.data.id);
      setSuccess(true)
      dispatch({type: "UPDATE_SUCCESS", payload: res.data})

@@ -26,7 +26,6 @@ export default function Sidebar() {
         <span className="sidebar-title">GET IN TOUCH</span>
         <div className="sidebarSocial">
             <a href="https://linkedin.com/promise-yehangane/" target="blank"><i className='sidebarIcon fa-brands fa-linkedin'></i></a>
-            <a href="https://twitter.com/yehanganep" target="blank"><i className='sidebarIcon fab fa-twitter-square'></i></a>
             <a href="https://slack.com/yehanganep" target="blank"><i className='sidebarIcon fa-brands fa-slack'></i></a>
             <a href="https://instagram.com/n_uel07" target="blank"><i className='sidebarIcon fa-brands fa-instagram'></i></a>
         </div>
