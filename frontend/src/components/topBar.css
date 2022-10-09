@@ -17,6 +17,11 @@
     align-items: center;
     justify-content: center;
 }
+@media screen and (max-width: 40em) {
+  .topLeft{
+    display: none;
+  }
+}
 .topCenter{
     flex: 6;
 }
