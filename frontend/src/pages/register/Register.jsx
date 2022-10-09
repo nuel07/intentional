@@ -33,7 +33,7 @@ export default function Register() {
         setEmail('Enter a valid email')
       }
       dispatch({ type: "REGISTER_SUCCESS", payload: res.data })
-      res.data && window.location.replace("/api/auth/login");
+      res.data && window.location.replace("/login");
     } catch (error) {
       dispatch({type: "REGISTER_FAILURE"})
       setError(true)

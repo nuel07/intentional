@@ -37,7 +37,7 @@ export default function Write() {
       }
     }
     try {
-     const res = await axios.post("/api/posts", newPost)
+     const res = await axios.post("/api/posts/", newPost)
      window.location.replace("/api/posts/" + res.data.id);
     } catch (error) {
       
@@ -62,7 +62,7 @@ export default function Write() {
             <textarea placeholder='lets hear it.....' type='text'
             className='txtInput writeTxt' onChange={(e) => setDesc(e.target.value)}></textarea>
         </div>
-        <button className="writeSubmit" type='submit'>Publish</button>
+        <button className="writeSubmit" type='submit' onClick={handleSubmit}>Publish</button>
       </form>
     </div>
   )

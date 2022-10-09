@@ -43,7 +43,7 @@
 }
 .writeSubmit{
     position: absolute;
-    top: 20px;
+    bottom: 20px;
     right: 50px;
     color: whitesmoke;
     background-color: turquoise;
