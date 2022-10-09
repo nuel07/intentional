@@ -25,6 +25,9 @@ export default function TopBar() {
             <a href="https://dockerhub.com.com/nuel07" target="blank"><i className='topIcon fa-brands fa-docker'></i></a>
             <a href="https://medium.com/@yehanganep" target="blank"><i className='topIcon fa-brands fa-medium'></i></a>
         </div>
+        <div className='topLeft toggle'>
+            <i class="fas fa-bars"></i>
+        </div>
         <div className="topCenter">
             <ul className="topList">
                 <li className='topList-item'>

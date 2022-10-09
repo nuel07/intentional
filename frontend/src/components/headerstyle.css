@@ -22,8 +22,8 @@
 }
 @media screen and (max-width: 40em){
     .headerImg{
-        max-width: 100%;
-        min-height: 300px;
+        max-width: 70%;
+        min-height: 100px;
         margin-top: 5px;
         object-fit: cover;
         position: relative;

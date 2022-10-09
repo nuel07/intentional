@@ -19,7 +19,13 @@
 }
 @media screen and (max-width: 40em) {
   .topLeft{
-    display: none;
+    flex-direction: column;
+  }
+  .toggle {
+    align-self: flex-end;
+    display: initial;
+    position: absolute;
+    cursor: pointer;
   }
 }
 .topCenter{
