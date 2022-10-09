@@ -4,6 +4,7 @@ import { useContext } from 'react'
 import { Context } from '../context/postsContext'
 import { useEffect } from 'react'
 import { useState } from 'react'
+import axios from 'axios'
 
 
 export default function Posts() {
@@ -14,7 +15,6 @@ export default function Posts() {
       const data = await res.data
       return data
     } catch (error) {
-      res.status(500).json(error)
     }
     useEffect(() => {
       getPosts().then(data => setPosts(data.posts))
