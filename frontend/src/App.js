@@ -1,4 +1,4 @@
-import React, {useContext} from "react";
+import React from "react";
 //import { useState } from "react";
 import TopBar from "./components/TopBar";
 import Home from './pages/home/Home'
@@ -15,10 +15,9 @@ import {
   //Link
 } from 'react-router-dom';
 //import { Context } from "./context/Context";
-import { useSelector } from "react-redux";
 
 function App() {
-  const {user} = useSelector(state => state.auth)
+  //const {user} = useContext(Context)
   return (
     <>
     <Router>

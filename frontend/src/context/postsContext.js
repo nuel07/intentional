@@ -2,7 +2,7 @@ import { createContext, useEffect, useReducer } from "react"
 import Reducer from "./Reducer"
 
 const INITIAL_STATE = {
-    user: localStorage.getItem("user") !== undefined? JSON.parse(localStorage.getItem("user")): null,
+    posts: [],
     isFetching: false,
     isError: false,
 }
@@ -11,12 +11,12 @@ export const Context = createContext(INITIAL_STATE)
 export const ContextProvider = ({children}) => {
     const [state, dispatch] = useReducer(Reducer, INITIAL_STATE);
     useEffect(() => {
-        localStorage.setItem("user", JSON.stringify(state.user))
-    }, [state.user])
+        localStorage.setItem("posts", JSON.stringify(state.posts))
+    }, [state.posts])
     return (
         <Context.Provider
         value={{
-            user: state.user,
+            posts: state.posts,
             isFetching: state.isFetching,
             isError: state.isError,
             dispatch,

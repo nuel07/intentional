@@ -1,7 +1,7 @@
 //import { useEffect, useState } from 'react';
 import './sidebar.css'
-import axios from 'axios';
-import {Link} from 'react-router-dom';
+//import axios from 'axios';
+//import {Link} from 'react-router-dom';
 
 export default function Sidebar() {
   /*const [categories, setCats] = useState([]);
